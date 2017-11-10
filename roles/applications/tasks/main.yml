@@ -1,0 +1,14 @@
+---
+- name: Install Google Chrome
+  apt:
+    deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+- name: Get IntelliJ and UnArchive it
+  unarchive:
+    src: https://download-cf.jetbrains.com/idea/ideaIU-2017.2.5.tar.gz
+    dest: /opt/
+    remote_src: yes
+
+- name: Install Slack
+  apt:
+    deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-2.5.2-amd64.deb

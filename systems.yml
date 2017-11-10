@@ -1,0 +1,32 @@
+---
+- name: Setup laptop
+  hosts: laptop
+  remote_user: gkman
+  become: true
+
+  roles:
+    - setup
+    - docker
+    - users
+    - applications
+
+- name: Setup desktop
+  hosts: desktop
+  remote_user: gkman
+  become: true
+
+  roles:
+    - setup
+    - docker
+    - users
+    - applications
+
+- name: Setup server
+  hosts: server
+  remote_user: gkman
+  become: yes
+
+  roles:
+    - setup
+    - docker
+    - users
