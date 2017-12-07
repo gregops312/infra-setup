@@ -6,29 +6,44 @@
 * Finish IntelliJ install
 ** `cd /opt/idea*`
 ** `./bin/idea.sh`
-* Install Steam
-** https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+* Check for IntelliJ before installing
 * Install `go` lang
-* Install VLC
-** `vlc`
-** `browser-plugin-vlc`
-** `libavcodec-extra-53`
 
 == TODO
 
-* [ ] Automate `vlc`
 * [ ] Automate `steam`
 * [ ] automate changing to `zsh`
 * [ ] automate install of `oh-my-zsh`
 
 == Usage
 
-== Using pem key
+=== Setup
+
+* Find IP
+* `sudo -i passwd root`
+* `sudo visudo`
+* `%sudo  ALL=(ALL:ALL) NOPASSWD:ALL`
+
+[source, bash]
+----
+sudo apt-get install \
+    openssh-server \
+    python
+----
+
+=== Local
+
+[source, bash]
+----
+docker build . -t my-ubuntu:latest
+docker run --rm -it --name ubuntu -d my-ubuntu:latest
+ansible-playbook -i local systems.yml
+----
+
+=== Using pem key
 
 `ansible-playbook -i desktop systems.yml`
 
-
-
-== Using Password
+=== Using Password
 
 `ansible-playbook -i laptop -k systems.yml`

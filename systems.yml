@@ -1,4 +1,13 @@
 ---
+- name: Setup local local
+  hosts: ubuntu
+
+  roles:
+      - setup
+      - docker
+      - users
+      - applications
+
 - name: Setup laptop
   hosts: laptop
   remote_user: gkman
