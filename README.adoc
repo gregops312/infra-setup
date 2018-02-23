@@ -9,41 +9,66 @@
 * Check for IntelliJ before installing
 * Install `go` lang
 
+== Prerequesties
+
+* IP of service
+* Make password for root
+** `sudo -i passwd root`
+* No password for sudo
+** `sudo visudo`
+*** `%sudo  ALL=(ALL:ALL) NOPASSWD:ALL`
+* On target
++
+[source, bash]
+----
+sudo apt-get install \
+    net-tools \
+    openssh-server \
+    python
+----
+
+== Desktop/Server
+
+[source, bash]
+----
+ansible-playbook -i machine systems.yml -k --limit desktop
+
+ansible-playbook -i machine systems.yml -k --limit laptop
+----
+
+== Dev
+
+=== Docker
+
+[source, bash]
+----
+docker build . -t my-ubuntu:latest && \
+docker run --rm -it --name ubuntu -d my-ubuntu:latest
+
+ansible-playbook -i machine systems.yml --limit docker
+----
+
+=== Virtualbox
+
+// https://unix.stackexchange.com/questions/145997/trying-to-ssh-to-local-vm-ubuntu-with-putty
+
+[source, bash]
+----
+# Locally
+sudo apt-get install -y sshpass
+# make sure sudo password isn't required
+ansible-playbook -i machine systems.yml -k --limit virtualbox
+# enter password
+----
+
+== Misc
+
+If issues are seen connecting via ssh host key use:
+
+`export ANSIBLE_HOST_KEY_CHECKING=False`
+
 == TODO
 
 * [ ] Automate `steam`
 * [ ] automate changing to `zsh`
 * [ ] automate install of `oh-my-zsh`
-
-== Usage
-
-=== Setup
-
-* Find IP
-* `sudo -i passwd root`
-* `sudo visudo`
-* `%sudo  ALL=(ALL:ALL) NOPASSWD:ALL`
-
-[source, bash]
-----
-sudo apt-get install \
-    openssh-server \
-    python
-----
-
-=== Local
-
-[source, bash]
-----
-docker build . -t my-ubuntu:latest
-docker run --rm -it --name ubuntu -d my-ubuntu:latest
-ansible-playbook -i local systems.yml
-----
-
-=== Using pem key
-
-`ansible-playbook -i desktop systems.yml`
-
-=== Using Password
-
-`ansible-playbook -i laptop -k systems.yml`

@@ -1,6 +1,8 @@
 ---
-- name: Setup local local
-  hosts: ubuntu
+- name: Setup Docker
+  hosts: docker
+  remote_user: root
+  become: true
 
   roles:
       - setup
@@ -8,34 +10,46 @@
       - users
       - applications
 
-- name: Setup laptop
+- name: Setup Laptop
   hosts: laptop
   remote_user: gkman
   become: true
 
   roles:
-    - setup
-    - docker
-    - users
-    - applications
+      - setup
+      - docker
+      - users
+      - applications
 
-- name: Setup desktop
-  hosts: desktop
+# - name: Setup Localhost
+#   hosts: localhost
+#   remote_user: gkman
+#   become: true
+#
+#   roles:
+#       - setup
+#       - docker
+#       - users
+#       - applications
+
+# - name: Setup Server
+#   hosts: laptop
+#   remote_user: gkman
+#   become: true
+#
+#   roles:
+#       - setup
+#       - docker
+#       - users
+#       - applications
+
+- name: Setup Virtualbox
+  hosts: virtualbox
   remote_user: gkman
   become: true
 
   roles:
-    - setup
-    - docker
-    - users
-    - applications
-
-- name: Setup server
-  hosts: server
-  remote_user: gkman
-  become: yes
-
-  roles:
-    - setup
-    - docker
-    - users
+      - setup
+      - docker
+      - users
+      - applications

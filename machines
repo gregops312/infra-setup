@@ -1,0 +1,13 @@
+[desktop]
+192.168.86.208
+
+[docker]
+ubuntu ansible_connection=docker
+
+[laptop]
+192.168.86.232 host_key_checking=false
+
+[localhost]
+
+[virtualbox]
+127.0.1.1 ansible_port=2222
