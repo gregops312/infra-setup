@@ -11,20 +11,16 @@
 
 == Prerequesties
 
-* IP of service
-* Make password for root
-** `sudo -i passwd root`
-* No password for sudo
-** `sudo visudo`
-*** `%sudo  ALL=(ALL:ALL) NOPASSWD:ALL`
 * On target
 +
 [source, bash]
 ----
-sudo apt-get install \
-    net-tools \
-    openssh-server \
-    python
+sudo apt-get install -y curl
+
+curl https://gitlab.com/snippets/1700834/raw > run.sh && \
+  chmod 0777 run.sh && \
+  clear
+./run.sh
 ----
 
 == Desktop/Server
@@ -45,27 +41,17 @@ ansible-playbook -i machine systems.yml -k --limit laptop
 docker build . -t my-ubuntu:latest && \
 docker run --rm -it --name ubuntu -d my-ubuntu:latest
 
-ansible-playbook -i machine systems.yml --limit docker
+ansible-playbook -i machines systems.yml --limit docker
 ----
 
 === Virtualbox
 
-// https://unix.stackexchange.com/questions/145997/trying-to-ssh-to-local-vm-ubuntu-with-putty
-
 [source, bash]
 ----
-# Locally
-sudo apt-get install -y sshpass
-# make sure sudo password isn't required
-ansible-playbook -i machine systems.yml -k --limit virtualbox
-# enter password
+export ANSIBLE_HOST_KEY_CHECKING=False
+ansible-playbook -i machines systems.yml -k --limit virtualbox
+unset ANSIBLE_HOST_KEY_CHECKING
 ----
-
-== Misc
-
-If issues are seen connecting via ssh host key use:
-
-`export ANSIBLE_HOST_KEY_CHECKING=False`
 
 == TODO
 
