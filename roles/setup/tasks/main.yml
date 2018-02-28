@@ -2,6 +2,7 @@
 - name: Install pre-req packages
   apt: name={{ item }} update_cache=yes
   with_items:
+    - ansible
     - browser-plugin-vlc
     - curl
     - gcc
@@ -17,6 +18,7 @@
     - python3-pip
     - python3-venv
     - ssh
+    - sshpass
     - tmux
     - vim
     - vlc

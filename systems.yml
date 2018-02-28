@@ -45,7 +45,7 @@
 
 - name: Setup Virtualbox
   hosts: virtualbox
-  remote_user: gkman
+  remote_user: vmtest
   become: true
 
   roles:
