@@ -5,10 +5,9 @@
   become: true
 
   roles:
-      - setup
-      - docker
-      - users
-      - applications
+      - common
+      - desktop
+      - cleanup
 
 - name: Setup Laptop
   hosts: laptop
@@ -16,10 +15,9 @@
   become: true
 
   roles:
-      - setup
-      - docker
-      - users
-      - applications
+      - common
+      - desktop
+      - cleanup
 
 # - name: Setup Localhost
 #   hosts: localhost
@@ -27,10 +25,9 @@
 #   become: true
 #
 #   roles:
-#       - setup
-#       - docker
-#       - users
-#       - applications
+#       - common
+#       - desktop
+#       - cleanup
 
 # - name: Setup Server
 #   hosts: laptop
@@ -38,10 +35,8 @@
 #   become: true
 #
 #   roles:
-#       - setup
-#       - docker
-#       - users
-#       - applications
+#       - common
+#       - cleanup
 
 - name: Setup Virtualbox
   hosts: virtualbox
@@ -49,7 +44,6 @@
   become: true
 
   roles:
-      - setup
-      - docker
-      - users
-      - applications
+      - common
+      - desktop
+      - cleanup

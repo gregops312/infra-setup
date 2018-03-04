@@ -58,3 +58,4 @@ unset ANSIBLE_HOST_KEY_CHECKING
 * [ ] Automate `steam`
 * [ ] automate changing to `zsh`
 * [ ] automate install of `oh-my-zsh`
+* [ ] allow chrome skip

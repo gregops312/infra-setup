@@ -1,26 +1,21 @@
 ---
-- name: Install pre-req packages
+- name: install packages
   apt: name={{ item }} update_cache=yes
   with_items:
-    - ansible
-    - browser-plugin-vlc
     - curl
     - gcc
     - git
-    - gradle
     - htop
     - make
     - ncdu
     - net-tools
-    - openjdk-8-jre
     - python
     - python3.6
     - python3-pip
     - python3-venv
     - ssh
-    - sshpass
     - tmux
     - vim
-    - vlc
     - wget
+    - xclip
     - zsh

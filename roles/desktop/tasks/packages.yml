@@ -1,0 +1,12 @@
+---
+- name: "desktop : install packages"
+  apt: name={{ item }} update_cache=yes
+  with_items:
+    - ansible
+    - browser-plugin-vlc
+    - gradle
+    - openjdk-8-jre
+    - sshpass
+    - virtualbox
+    - virtualbox-ext-pack
+    - vlc

@@ -1,0 +1,41 @@
+---
+- name: install Google Chrome
+  apt:
+    deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+- name: download and unarchive IntelliJ
+  unarchive:
+    src: https://download-cf.jetbrains.com/idea/ideaIU-2017.3.4.tar.gz
+    dest: /opt
+    creates: /opt/idea-IU-173.4548.28
+    remote_src: yes
+
+- name: install slack
+  apt:
+    deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-2.5.2-amd64.deb
+
+- name: install steam
+  apt:
+    deb: https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+
+#- name: Check if Google Chrome is installed
+#  command: dpkg-query -l google-chrome-stable
+#  register: chrome_check
+#  failed_when: False
+#  when: chrome_check.stdout.find('no packages found') != -1
+
+
+
+#- name: Check if Slack is installed
+#  command: dpkg-query -l slack-desktop
+#  register: slack_check
+
+
+#  when: slack_check.stdout.find('no packages found') != -1
+
+#- name: Check if Slack is installed
+#  command: dpkg-query -l steam-launcher
+#  register: steam_check
+
+
+#  when: steam_check.stdout.find('no packages found') != -1
