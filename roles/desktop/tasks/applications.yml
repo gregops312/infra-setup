@@ -1,4 +1,15 @@
 ---
+- name: is dropbox installed
+  command: dpkg-query --show dropbox
+  register: dropbox_exists
+  changed_when: False
+  failed_when: False
+
+- name: install dropbox
+  apt:
+    deb: https://linux.dropbox.com/packages/ubuntu/dropbox_2015.10.28_amd64.deb
+  when: dropbox_exists.rc == 1
+
 - name: download and unarchive IntelliJ
   unarchive:
     src: https://download-cf.jetbrains.com/idea/ideaIU-2017.3.4.tar.gz
