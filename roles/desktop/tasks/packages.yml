@@ -1,12 +1,44 @@
 ---
+- name: "desktop : atom : add apt key"
+  apt_key:
+    url: https://packagecloud.io/AtomEditor/atom/gpgkey
+    state: present
+
+- name: "desktop : atom : add apt repository"
+  apt_repository:
+    repo: deb https://packagecloud.io/AtomEditor/atom/any/ any main
+    state: present
+
+- name: "desktop : brackets : add repository"
+  apt_repository:
+    repo: ppa:webupd8team/brackets
+
+- name: "desktop : google chrome : add apt key"
+  apt_key:
+    url: https://dl.google.com/linux/linux_signing_key.pub
+    state: present
+
+- name: "desktop : google chrome : add apt repository"
+  apt_repository:
+    repo: deb http://dl.google.com/linux/chrome/deb/ stable main
+    state: present
+
+- name: "desktop : vidcutter : add repository"
+  apt_repository:
+    repo: ppa:ozmartian/apps
+
 - name: "desktop : install packages"
   apt: name={{ item }} update_cache=yes
   with_items:
     - ansible
+    - atom
+    - brackets
     - browser-plugin-vlc
+    - google-chrome-stable
     - gradle
     - openjdk-8-jre
     - sshpass
+    - vidcutter
     - virtualbox
     - virtualbox-ext-pack
     - vlc
