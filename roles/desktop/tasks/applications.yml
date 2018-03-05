@@ -1,7 +1,14 @@
 ---
+- name: is Google Chrome installed
+  command: dpkg-query --show google-chrome-stable
+  register: chrome_check
+  changed_when: False
+  failed_when: False
+
 - name: install Google Chrome
   apt:
     deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  when: chrome_check.rc == 1
 
 - name: download and unarchive IntelliJ
   unarchive:
@@ -10,32 +17,24 @@
     creates: /opt/idea-IU-173.4548.28
     remote_src: yes
 
+- name: is slack installed
+  command: dpkg-query --show slack-desktop
+  register: slack_exists
+  changed_when: False
+  failed_when: False
+
 - name: install slack
   apt:
     deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-2.5.2-amd64.deb
+  when: slack_exists.rc == 1
+
+- name: is steam installed
+  command: dpkg-query --show steam-launcher
+  register: steam_exists
+  changed_when: False
+  failed_when: False
 
 - name: install steam
   apt:
     deb: https://steamcdn-a.akamaihd.net/client/installer/steam.deb
-
-#- name: Check if Google Chrome is installed
-#  command: dpkg-query -l google-chrome-stable
-#  register: chrome_check
-#  failed_when: False
-#  when: chrome_check.stdout.find('no packages found') != -1
-
-
-
-#- name: Check if Slack is installed
-#  command: dpkg-query -l slack-desktop
-#  register: slack_check
-
-
-#  when: slack_check.stdout.find('no packages found') != -1
-
-#- name: Check if Slack is installed
-#  command: dpkg-query -l steam-launcher
-#  register: steam_check
-
-
-#  when: steam_check.stdout.find('no packages found') != -1
+  when: steam_exists.rc == 1
