@@ -38,9 +38,6 @@ ansible-playbook -i machine systems.yml -k --limit laptop
 
 [source, bash]
 ----
-docker build . -t my-ubuntu:latest && \
-docker run --rm -it --name ubuntu -d my-ubuntu:latest
-
 ansible-playbook -i machines systems.yml --limit docker
 ----
 
