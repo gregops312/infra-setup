@@ -1,0 +1,1 @@
+cat ~/.ssh/id_rsa.pub | xclip -sel clip
