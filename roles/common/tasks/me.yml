@@ -10,8 +10,8 @@
 
 - name: Copy key script
   copy:
-    src: ../files/key.sh
-    dest: /home/gkman/key.sh
+    src: ../files/post-configure.sh
+    dest: /home/gkman/post-configure.sh
     owner: gkman
     group: gkman
     mode: 0744

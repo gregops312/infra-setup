@@ -11,25 +11,32 @@
 
 == Prerequesties
 
-* On target
-+
 [source, bash]
 ----
-sudo apt-get install -y curl
+# Target
+sudo apt-get install -y openssh-server
 
-curl https://gitlab.com/snippets/1700834/raw > run.sh && \
-  chmod 0777 run.sh && \
-  clear
-./run.sh
+# Host
+scp ./bin/prepare-ansible.sh gkman@127.0.1.1:~/prepare-ansible.sh
+
+# Target
+./prepare-ansible.sh
 ----
 
 == Desktop/Server
 
 [source, bash]
 ----
-ansible-playbook -i machine systems.yml -k --limit desktop
+ansible-playbook -i machines systems.yml -k --limit desktop
 
-ansible-playbook -i machine systems.yml -k --limit laptop
+ansible-playbook -i machines systems.yml -k --limit laptop
+----
+
+== localhost
+
+[source,bash]
+----
+ansible-playbook -i machines -c local  systems.yml --limit localhost
 ----
 
 == Dev
@@ -45,6 +52,8 @@ ansible-playbook -i machines systems.yml --limit docker
 
 [source, bash]
 ----
+scp -P 2222 ./bin/prepare-ansible.sh vmtest@127.0.1.1:~/prepare-ansible.sh
+
 export ANSIBLE_HOST_KEY_CHECKING=False
 ansible-playbook -i machines systems.yml -k --limit virtualbox
 unset ANSIBLE_HOST_KEY_CHECKING

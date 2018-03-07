@@ -5,15 +5,18 @@
     - apt-transport-https
     - ca-certificates
     - software-properties-common
+
 - name: "docker : add Docker apt-key"
   apt_key:
-    id: 0EBFCD88
+    # id: 0EBFCD88
     url: 'https://download.docker.com/linux/ubuntu/gpg'
     state: present
+
 - name: "docker : add Docker repository"
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu zesty stable
     state: present
+
 - name: "docker : install Docker Community Edition"
   apt:
     name: docker-ce

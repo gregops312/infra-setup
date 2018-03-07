@@ -8,8 +8,10 @@ ubuntu ansible_connection=docker
 192.168.86.232 host_key_checking=false
 
 [localhost]
+ansible_connection=local
 
 [server]
+gkman.org ansible_port=2222
 
 [virtualbox]
 127.0.1.1 ansible_port=2222

@@ -19,24 +19,24 @@
       - desktop
       - cleanup
 
-# - name: Setup Localhost
-#   hosts: localhost
-#   remote_user: gkman
-#   become: true
-#
-#   roles:
-#       - common
-#       - desktop
-#       - cleanup
+- name: Setup Localhost
+  hosts: localhost
+  remote_user: gkman
+  become: true
 
-# - name: Setup Server
-#   hosts: laptop
-#   remote_user: gkman
-#   become: true
-#
-#   roles:
-#       - common
-#       - cleanup
+  roles:
+      - common
+      - desktop
+      - cleanup
+
+- name: Setup Server
+  hosts: laptop
+  remote_user: gkman
+  become: true
+
+  roles:
+      - common
+      - cleanup
 
 - name: Setup Virtualbox
   hosts: virtualbox
