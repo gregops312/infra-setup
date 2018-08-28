@@ -15,6 +15,7 @@
     - python3-venv
     - ssh
     - tmux
+    - tree
     - vim
     - wget
     - xclip
