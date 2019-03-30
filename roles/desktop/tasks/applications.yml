@@ -10,13 +10,6 @@
     deb: https://linux.dropbox.com/packages/ubuntu/dropbox_2015.10.28_amd64.deb
   when: dropbox_exists.rc == 1
 
-- name: download and unarchive IntelliJ
-  unarchive:
-    src: https://download-cf.jetbrains.com/idea/ideaIU-2017.3.4.tar.gz
-    dest: /opt
-    creates: /opt/idea-IU-173.4548.28
-    remote_src: yes
-
 - name: is slack installed
   command: dpkg-query --show slack-desktop
   register: slack_exists

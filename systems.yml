@@ -1,6 +1,6 @@
 ---
-- name: Setup Docker
-  hosts: docker
+- name: Docker Desktop
+  hosts: docker_desktop
   remote_user: root
   become: true
 
@@ -9,7 +9,17 @@
       - desktop
       - cleanup
 
-- name: Setup Laptop
+- name: Docker Server
+  hosts: docker_server
+  remote_user: root
+  become: true
+
+  roles:
+      - common
+      - server
+      - cleanup
+
+- name: Laptop
   hosts: laptop
   remote_user: gkman
   become: true
@@ -19,7 +29,7 @@
       - desktop
       - cleanup
 
-- name: Setup Localhost
+- name: Localhost
   hosts: localhost
   remote_user: gkman
   become: true
@@ -29,21 +39,32 @@
       - desktop
       - cleanup
 
-- name: Setup Server
-  hosts: laptop
+- name: Server
+  hosts: server
   remote_user: gkman
   become: true
 
   roles:
       - common
+      - server
       - cleanup
 
-- name: Setup Virtualbox
-  hosts: virtualbox
+- name: Virtualbox Desktop
+  hosts: virtualbox_desktop
   remote_user: vmtest
   become: true
 
   roles:
       - common
       - desktop
+      - cleanup
+
+- name: Virtualbox Server
+  hosts: virtualbox_server
+  remote_user: vmtest
+  become: true
+
+  roles:
+      - common
+      - server
       - cleanup

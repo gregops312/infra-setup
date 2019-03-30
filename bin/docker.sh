@@ -1,7 +1,7 @@
 #!/bin/bash
 
 create() {
-  docker build . -t my-ubuntu:latest
+  cd ./bin && docker build . -t my-ubuntu:latest
   docker run --rm -it --name ubuntu -d my-ubuntu:latest
 }
 

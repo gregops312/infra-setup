@@ -1,7 +1,7 @@
 ---
 - name: install packages
-  apt: name={{ item }} update_cache=yes
-  with_items:
+  apt: 
+    name:
     - curl
     - gcc
     - git
@@ -20,3 +20,4 @@
     - wget
     - xclip
     - zsh
+    update_cache: yes

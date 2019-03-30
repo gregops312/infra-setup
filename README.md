@@ -1,18 +1,12 @@
-= Ansible System Setup
-:toc:
+# Ansible System Setup
 
-== Additional stuff
+## Additional stuff
 
-* Finish IntelliJ install
-** `cd /opt/idea*`
-** `./bin/idea.sh`
-* Check for IntelliJ before installing
 * Install `go` lang
 
-== Prerequesties
+## Prerequesties
 
-[source, bash]
-----
+```bash
 # Target
 sudo apt-get install -y openssh-server
 
@@ -21,46 +15,46 @@ scp ./bin/prepare-ansible.sh gkman@127.0.1.1:~/prepare-ansible.sh
 
 # Target
 ./prepare-ansible.sh
-----
+```
 
-== Desktop/Server
+## Desktop/Server
 
-[source, bash]
-----
+```bash
 ansible-playbook -i machines systems.yml -k --limit desktop
 
 ansible-playbook -i machines systems.yml -k --limit laptop
-----
+```
 
-== localhost
+## localhost
 
-[source,bash]
-----
+```bash
 ansible-playbook -i machines -c local  systems.yml --limit localhost
-----
+```
 
-== Dev
+## Dev
 
-=== Docker
+### Docker
 
-[source, bash]
-----
-ansible-playbook -i machines systems.yml --limit docker
-----
+#### Setup
 
-=== Virtualbox
+```bash
+cd bin
+./docker.sh
+# Select 1
+cd ../
+```
 
-[source, bash]
-----
+```bash
+ansible-playbook -i machines systems.yml --limit docker_desktop
+ansible-playbook -i machines systems.yml --limit docker_server
+```
+
+### Virtualbox
+
+```bash
 scp -P 2222 ./bin/prepare-ansible.sh vmtest@127.0.1.1:~/prepare-ansible.sh
 
 export ANSIBLE_HOST_KEY_CHECKING=False
 ansible-playbook -i machines systems.yml -k --limit virtualbox
 unset ANSIBLE_HOST_KEY_CHECKING
-----
-
-== TODO
-
-* [ ] Automate `steam`
-* [ ] automate changing to `zsh`
-* [ ] automate install of `oh-my-zsh`
+```

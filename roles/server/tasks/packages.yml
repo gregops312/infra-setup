@@ -1,0 +1,5 @@
+- name: "server : install packages"
+  apt: 
+    name:
+    - qbittorrent-nox
+    update_cache: yes
