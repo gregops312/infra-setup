@@ -1,16 +1,6 @@
 ---
-- name: Docker Desktop
-  hosts: docker_desktop
-  remote_user: root
-  become: true
-
-  roles:
-      - common
-      - desktop
-      - cleanup
-
-- name: Docker Server
-  hosts: docker_server
+- name: Docker
+  hosts: docker
   remote_user: root
   become: true
 
@@ -49,18 +39,8 @@
       - server
       - cleanup
 
-- name: Virtualbox Desktop
-  hosts: virtualbox_desktop
-  remote_user: vmtest
-  become: true
-
-  roles:
-      - common
-      - desktop
-      - cleanup
-
 - name: Virtualbox Server
-  hosts: virtualbox_server
+  hosts: virtualbox
   remote_user: vmtest
   become: true
 
