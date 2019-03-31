@@ -6,7 +6,6 @@
     - ca-certificates
     - software-properties-common
     update_cache: yes
-    
 
 - name: "docker : add Docker apt-key"
   apt_key:
@@ -16,7 +15,7 @@
 
 - name: "docker : add Docker repository"
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu zesty stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ release_codename }} stable
     state: present
 
 - name: "docker : install Docker Community Edition"

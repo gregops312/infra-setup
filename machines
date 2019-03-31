@@ -1,10 +1,7 @@
 [desktop]
 192.168.86.208
 
-[docker_desktop]
-ubuntu ansible_connection=docker
-
-[docker_server]
+[docker]
 ubuntu ansible_connection=docker
 
 [laptop]
@@ -16,8 +13,5 @@ ansible_connection=local
 [server]
 gkman.org ansible_port=2222
 
-[virtualbox_desktop]
-127.0.1.1 ansible_port=2222
-
-[virtualbox_server]
+[virtualbox]
 127.0.1.1 ansible_port=2222

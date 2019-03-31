@@ -1,5 +1,6 @@
 ---
-- user:
+- name: Create user
+  user:
     name: gkman
     append: yes
     groups: sudo,docker
