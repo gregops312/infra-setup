@@ -1,5 +1,16 @@
+- name: "plex : add apt-key"
+  apt_key:
+    url: "https://downloads.plex.tv/plex-keys/PlexSign.key"
+    state: present
+
+- name: "plex : add repository"
+  apt_repository:
+    repo: deb https://downloads.plex.tv/repo/deb public main
+    state: present
+
 - name: "server : install packages"
   apt: 
     name:
+    - plexmediaserver
     - qbittorrent-nox
     update_cache: yes

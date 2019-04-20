@@ -6,7 +6,7 @@
     - software-properties-common
     update_cache: yes
 
-- name: "docker : add Docker apt-key"
+- name: "docker : add apt-key"
   apt_key:
     # id: 0EBFCD88
     url: 'https://download.docker.com/linux/ubuntu/gpg'
