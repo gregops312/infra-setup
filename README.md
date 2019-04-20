@@ -35,8 +35,6 @@ ansible-playbook -i machines -c local  systems.yml --limit localhost
 
 ### Docker
 
-#### Setup
-
 ```bash
 cd bin
 ./docker.sh
@@ -47,6 +45,16 @@ cd ../
 ```bash
 ansible-playbook -i machines systems.yml --limit docker_desktop
 ansible-playbook -i machines systems.yml --limit docker_server
+```
+
+### Vagrant
+
+```bash
+# Create
+vagrant up
+
+# Destroy
+vagrant destroy -f
 ```
 
 ### Virtualbox
