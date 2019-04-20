@@ -39,12 +39,12 @@
       - server
       - cleanup
 
-- name: Virtualbox Server
+- name: Virtualbox
   hosts: virtualbox
   remote_user: vmtest
   become: true
 
   roles:
       - common
-      - server
+      - desktop
       - cleanup
