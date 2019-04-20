@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "ansible" do |ansible|
     ansible.inventory_path = "machines"
     ansible.limit = "virtualbox"
-    ansible.playbook = "systems.yml"
+    ansible.playbook = "systems.yaml"
   end
 
   config.vm.provision "shell", inline: "sudo reboot"

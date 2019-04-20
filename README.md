@@ -1,9 +1,5 @@
 # Ansible System Setup
 
-## Additional stuff
-
-* Install `go` lang
-
 ## Prerequesties
 
 ```bash
@@ -17,34 +13,32 @@ scp ./bin/prepare-ansible.sh gkman@127.0.1.1:~/prepare-ansible.sh
 ./prepare-ansible.sh
 ```
 
-## Desktop/Server
+## Running
 
-```bash
-ansible-playbook -i machines systems.yml -k --limit desktop
-
-ansible-playbook -i machines systems.yml -k --limit laptop
-```
-
-## localhost
-
-```bash
-ansible-playbook -i machines -c local  systems.yml --limit localhost
-```
+* desktop
+    ```bash
+    ansible-playbook -i machines systems.yaml -k --limit desktop
+    ```
+* localhost
+    ```bash
+    ansible-playbook -i machines -c local  systems.yaml --limit localhost
+    ```
+* server
+    ```bash
+    ansible-playbook -i machines systems.yaml -k --limit laptop
+    ```
 
 ## Dev
 
 ### Docker
 
 ```bash
-cd bin
 ./docker.sh
 # Select 1
-cd ../
 ```
 
 ```bash
-ansible-playbook -i machines systems.yml --limit docker_desktop
-ansible-playbook -i machines systems.yml --limit docker_server
+ansible-playbook -i machines systems.yaml --limit docker
 ```
 
 ### Vagrant
@@ -55,14 +49,4 @@ vagrant up
 
 # Destroy
 vagrant destroy -f
-```
-
-### Virtualbox
-
-```bash
-scp -P 2222 ./bin/prepare-ansible.sh vmtest@127.0.1.1:~/prepare-ansible.sh
-
-export ANSIBLE_HOST_KEY_CHECKING=False
-ansible-playbook -i machines systems.yml -k --limit virtualbox
-unset ANSIBLE_HOST_KEY_CHECKING
 ```
