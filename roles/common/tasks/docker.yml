@@ -2,7 +2,6 @@
 - name: "docker : install packages"
   apt: 
     name:
-    - apt-transport-https
     - ca-certificates
     - software-properties-common
     update_cache: yes
