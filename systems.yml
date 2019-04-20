@@ -6,7 +6,7 @@
 
   roles:
       - common
-      - server
+      - desktop
       - cleanup
 
 - name: Laptop

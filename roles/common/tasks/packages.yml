@@ -2,6 +2,7 @@
 - name: install packages
   apt: 
     name:
+    - apt-transport-https
     - curl
     - gcc
     - git
