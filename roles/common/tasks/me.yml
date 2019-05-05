@@ -13,7 +13,7 @@
 
 - name: Copy key script
   copy:
-    src: ../files/post-configure.sh
+    src: files/post-configure.sh
     dest: /home/gkman/post-configure.sh
     owner: gkman
     group: gkman

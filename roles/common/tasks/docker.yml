@@ -1,6 +1,6 @@
 ---
 - name: "docker : install packages"
-  apt: 
+  apt:
     name:
     - ca-certificates
     - software-properties-common

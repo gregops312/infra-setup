@@ -9,7 +9,7 @@
     state: present
 
 - name: "server : install packages"
-  apt: 
+  apt:
     name:
     - plexmediaserver
     - qbittorrent-nox

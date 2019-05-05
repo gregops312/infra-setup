@@ -24,8 +24,8 @@
     repo: ppa:ozmartian/apps
 
 - name: "desktop : install packages"
-  apt: 
-    name: 
+  apt:
+    name:
     - ansible
     - browser-plugin-vlc
     - code
