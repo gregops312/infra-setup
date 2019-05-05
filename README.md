@@ -1,5 +1,7 @@
 # Ansible System Setup
 
+[![pipeline status](https://gitlab.com/gkman/infrastructure-configuration/badges/master/pipeline.svg)](https://gitlab.com/gkman/infrastructure-configuration/commits/master)
+
 ## Prerequesties
 
 ```bash
@@ -25,7 +27,7 @@ scp ./bin/prepare-ansible.sh gkman@127.0.1.1:~/prepare-ansible.sh
     ```
 * server
     ```bash
-    ansible-playbook -i machines systems.yaml -k --limit laptop
+    ansible-playbook -i machines systems.yaml -k --limit server
     ```
 
 ## Dev
