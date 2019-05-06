@@ -10,6 +10,16 @@
     deb: https://linux.dropbox.com/packages/ubuntu/dropbox_2015.10.28_amd64.deb
   when: dropbox_exists.rc == 1
 
+# - name: skype installed
+#   command: dpkg-query --show skype
+#   register: skype_exists
+#   changed_when: False
+#   failed_when: False
+
+# - name: install skype
+#   apt:
+#     deb: https://go.skype.com/skypeforlinux-64.deb
+
 - name: is slack installed
   command: dpkg-query --show slack-desktop
   register: slack_exists

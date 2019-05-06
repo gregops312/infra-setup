@@ -21,4 +21,4 @@ ansible-lint:
 ansible-syntax-check:
   stage: ansible-syntax-check
   script:
-    - ansible-playbook --inventory machines --syntax-check systems.yaml
+    - ansible-playbook --inventory machines --syntax-check systems.yaml --extra-vars "type=server"

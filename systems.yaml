@@ -46,5 +46,5 @@
 
   roles:
       - common
-      - desktop
+      - "{{ type }}"
       - cleanup

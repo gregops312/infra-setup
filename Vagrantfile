@@ -19,13 +19,18 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: "sudo apt-get update -y"
   config.vm.provision "shell", inline: "sudo apt-get install -y net-tools openssh-server python"
-  config.vm.provision "shell", inline: "sudo apt-get install -y gnome-session gdm3"
 
   config.vm.provision "ansible" do |ansible|
     ansible.inventory_path = "machines"
     ansible.limit = "virtualbox"
     ansible.playbook = "systems.yaml"
+    ansible.extra_vars = {
+      type: ENV['TYPE']
+    }
   end
 
-  config.vm.provision "shell", inline: "sudo reboot"
+  if ENV['TYPE'] == 'desktop'
+    config.vm.provision "shell", inline: "sudo apt-get install -y gnome-session gdm3"
+    config.vm.provision "shell", inline: "sudo reboot"
+  end
 end
