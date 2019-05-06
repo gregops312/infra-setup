@@ -47,7 +47,10 @@ ansible-playbook -i machines systems.yaml --limit docker
 
 ```bash
 # Create
-vagrant up
+export TYPE='server'; vagrant up
+
+# Manual vagrant execution
+export TYPE='server'; vagrant provision
 
 # Destroy
 vagrant destroy -f

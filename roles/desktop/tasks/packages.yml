@@ -1,29 +1,39 @@
 ---
-- name: "desktop : google chrome : add apt key"
+- name: "desktop : chrome : apt key"
   apt_key:
     url: https://dl.google.com/linux/linux_signing_key.pub
     state: present
 
-- name: "desktop : google chrome : add apt repository"
+- name: "desktop : chrome : apt repository"
   apt_repository:
     repo: deb http://dl.google.com/linux/chrome/deb/ stable main
     state: present
 
-- name: "desktop : vscode : add apt key"
+- name: "desktop : skype : apt key"
+  apt_key:
+    url: https://repo.skype.com/data/SKYPE-GPG-KEY
+    state: present
+
+- name: "desktop : skype : apt repository"
+  apt_repository:
+    repo: deb [arch=amd64] https://repo.skype.com/deb stable main
+    state: present
+
+- name: "desktop : vscode : apt key"
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
     state: present
 
-- name: "desktop : vscode : add repository"
+- name: "desktop : vscode : repository"
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
     state: present
 
-- name: "desktop : vidcutter : add repository"
+- name: "desktop : vidcutter : repository"
   apt_repository:
     repo: ppa:ozmartian/apps
 
-- name: "desktop : install packages"
+- name: "desktop : install app packages"
   apt:
     name:
     - ansible
@@ -32,6 +42,7 @@
     - google-chrome-stable
     - gradle
     - openjdk-8-jre
+    - skypeforlinux
     - sshpass
     - vidcutter
     - virtualbox

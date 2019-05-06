@@ -12,12 +12,12 @@
     url: 'https://download.docker.com/linux/ubuntu/gpg'
     state: present
 
-- name: "docker : add Docker repository"
+- name: "docker : add repository"
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ release_codename }} stable
     state: present
 
-- name: "docker : install Docker Community Edition"
+- name: "docker : install Community Edition"
   apt:
     name: docker-ce
     update_cache: yes
