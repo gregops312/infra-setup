@@ -1,10 +1,9 @@
 sudo apt-get install -y xclip
 
-echo -n '%sudo  ALL=(ALL:ALL) NOPASSWD:ALL' | xclip -sel clip
+echo -n '%sudo  ALL=(ALL:ALL) NOPASSWD:ALL' >> nopass
+sudo mv nopass /etc/sudoers.d
+sudo chown root:root /etx/sudoers.d/nopass
 
-sudo visudo
-
-# sudo mv nopass /etc/sudoers.d/
 
 sudo apt-get install -y \
     net-tools \
