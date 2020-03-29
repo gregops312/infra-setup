@@ -1,5 +1,6 @@
 run.sh
 Ubuntu.vdi
+.kitchen/
 
 # Created by https://www.gitignore.io/api/git,vim,linux,macos,ansible,intellij,intellij+iml,intellij+all
 

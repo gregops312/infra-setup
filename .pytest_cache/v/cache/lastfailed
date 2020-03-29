@@ -1,0 +1,18 @@
+{
+  "test/test_myinfra.py::test_nginx_is_installed[paramiko://all]": true,
+  "test/test_myinfra.py::test_nginx_running_and_enabled[paramiko://all]": true,
+  "test/test_myinfra.py::test_passwd_file[paramiko://all]": true,
+  "test_common.py::test_curl_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_git_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_htop_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_ncdu_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_net_tools_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_python3_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_ssh_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_tmux_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_tree_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_vim_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_wget_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_xclip_is_installed[ansible://ubuntu]": true,
+  "test_common.py::test_zsh_is_installed[ansible://ubuntu]": true
+}

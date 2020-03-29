@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+
+gem 'byebug'
+gem 'kitchen-ansible'
+gem 'kitchen-docker'
+gem 'kitchen-inspec'
+gem 'kitchen-vagrant'
+gem 'kitchen-verifier-serverspec'
+gem 'rake'
+gem 'serverspec'
+gem 'test-kitchen', '1.16.0'

@@ -1,0 +1,42 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: ansible_playbook
+  roles_path: roles
+  ansible_connection: ssh
+  ansible_verbose: true
+  ansible_verbosity: 4
+
+platforms:
+  - name: ubuntu
+    driver_config:
+      image: ubuntu:18.04
+      platform: ubuntu
+      provision_command:
+        - apt-get install -y openssh-server python python-pip
+        - mkdir -p /run/sshd
+
+verifier:
+  name: shell
+  command: py.test --host="ansible://${KITCHEN_USERNAME}@${KITCHEN_HOSTNAME}:${KITCHEN_PORT}?ssh_identity_file=${KITCHEN_SSH_KEY}" --junit-xml "junit-${KITCHEN_INSTANCE}.xml" "test/integration/${KITCHEN_SUITE}"
+
+suites:
+  # - name: gui
+  #   provisioner:
+  #     playbook: systems.yml
+  #     hosts: gui
+  #   verifier:
+  #     default_pattern: ture
+      # patterns:
+      # - spec/spec_helper.rb
+      # - spec/common_spec.rb
+  - name: server
+    provisioner:
+      verifier:
+        default_pattern: true
+        bundler_path: '/usr/local/bin'
+        rspec_path: '/usr/local/bin'
+      playbook: systems.yml
+      hosts: server
