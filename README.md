@@ -18,14 +18,19 @@ scp ./bin/prepare-ansible.sh gkman@127.0.1.1:~/prepare-ansible.sh
 ## Running
 
 * desktop
+
     ```bash
     ansible-playbook -i machines systems.yaml -k --limit desktop
     ```
+
 * localhost
+
     ```bash
     ansible-playbook -i machines -c local  systems.yaml --limit localhost
     ```
+
 * server
+
     ```bash
     ansible-playbook -i machines systems.yaml -k --limit server
     ```

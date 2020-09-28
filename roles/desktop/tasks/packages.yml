@@ -37,7 +37,6 @@
   apt:
     name:
     - ansible
-    - browser-plugin-vlc
     - code
     - google-chrome-stable
     - gradle
