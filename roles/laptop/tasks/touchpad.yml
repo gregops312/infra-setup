@@ -1,0 +1,8 @@
+---
+- name: "laptop : install app packages"
+  apt:
+    name:
+    - libinput-tools
+    - ruby
+    - xdotool
+    update_cache: yes
