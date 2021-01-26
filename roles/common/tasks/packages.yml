@@ -6,6 +6,7 @@
     - curl
     - gcc
     - git
+    - gnupg2
     - htop
     - make
     - ncdu
