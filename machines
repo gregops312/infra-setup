@@ -2,7 +2,7 @@
 192.168.86.208
 
 [docker]
-ubuntu ansible_connection=docker
+infra-test ansible_connection=docker
 
 [laptop]
 192.168.86.232 host_key_checking=false
