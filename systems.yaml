@@ -39,12 +39,12 @@
       - server
       - cleanup
 
-- name: Virtualbox
-  hosts: virtualbox
-  remote_user: vmtest
-  become: true
+# - name: Virtualbox
+#   hosts: virtualbox
+#   remote_user: vmtest
+#   become: true
 
-  roles:
-      - common
-      - "{{ type }}"
-      - cleanup
+#   roles:
+#       - common
+#       - "{{ type }}"
+#       - cleanup
