@@ -55,6 +55,7 @@
     - google-chrome-stable
     - gradle
     - openjdk-8-jre
+    - pidgin
     - skypeforlinux
     - software-properties-common
     - sshpass
