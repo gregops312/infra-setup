@@ -6,45 +6,25 @@
 
   roles:
       - common
-      - desktop
+      - "{{ type }}"
       - cleanup
 
-- name: Laptop
-  hosts: laptop
-  remote_user: gkman
-  become: true
-
-  roles:
-      - common
-      - desktop
-      - cleanup
-
-- name: Localhost
-  hosts: localhost
-  remote_user: gkman
-  become: true
-
-  roles:
-      - common
-      - desktop
-      - cleanup
-
-- name: Server
-  hosts: server
-  remote_user: gkman
-  become: true
-
-  roles:
-      - common
-      - server
-      - cleanup
-
-# - name: Virtualbox
-#   hosts: virtualbox
-#   remote_user: vmtest
+# - name: Laptop
+#   hosts: laptop
+#   remote_user: gkman
 #   become: true
 
 #   roles:
-#       - common
+#       - setup
 #       - "{{ type }}"
 #       - cleanup
+
+- name: Virtualbox
+  hosts: virtualbox
+  remote_user: vmtest
+  become: true
+
+  roles:
+      - common
+      - "{{ type }}"
+      - cleanup

@@ -1,6 +1,6 @@
 # Ansible System Setup
 
-[![pipeline status](https://gitlab.com/gkman/infrastructure-configuration/badges/master/pipeline.svg)](https://gitlab.com/gkman/infrastructure-configuration/commits/master)
+[![pipeline status](https://github.com/gkman/infra-setup/workflows/.github/workflows/workflow.yml/badge.svg)](https://github.com/gkman/infra-setup/workflows/.github/workflows/workflow.yml/badge.svg)
 
 ## Prerequesties
 
@@ -40,22 +40,34 @@ scp ./bin/prepare-ansible.sh gkman@127.0.1.1:~/prepare-ansible.sh
 ### Docker
 
 ```bash
-./docker.sh
-# Select 1
+# Runs setup, test, clean
+make docker
+
+# Setup docker container
+make docker-setup
+
+# Runs Ansible against Docker container
+make docker-test
+
+# Cleans up Docker container
+make docker-cleam
 ```
 
 ```bash
-ansible-playbook -i machines systems.yaml --limit docker
+ansible-playbook -i machines systems.yaml --limit docker --extra-vars "type=server"
+ansible-playbook -i machines systems.yaml --limit docker --extra-vars "type=server laptop=true"
 ```
 
 ### Vagrant
 
 ```bash
-# Create
+# Create VM and run Ansible
 export TYPE='server'; vagrant up
 
-# Manual vagrant execution
+# Just run Ansible on previously built VM
 export TYPE='server'; vagrant provision
+
+ansible-playbook -i machines systems.yaml --limit virtualbox --extra-vars "type=pc"
 
 # Destroy
 vagrant destroy -f
