@@ -3,3 +3,9 @@ exclude_paths:
 
 parseable: true
 use_default_rules: true
+
+extra_vars:
+  type: server
+
+warn_list:
+  - parser-error

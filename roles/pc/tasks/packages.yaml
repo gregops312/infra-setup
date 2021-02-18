@@ -1,39 +1,53 @@
 ---
-- name: "desktop : chrome : apt key"
+##
+## Chrome setup
+##
+- name: "chrome : apt key"
   apt_key:
     url: https://dl.google.com/linux/linux_signing_key.pub
     state: present
 
-- name: "desktop : chrome : apt repository"
+- name: "chrome : apt repository"
   apt_repository:
     repo: deb http://dl.google.com/linux/chrome/deb/ stable main
     state: present
 
-- name: "desktop : skype : apt key"
+##
+## Skype setup
+##
+- name: "skype : apt key"
   apt_key:
     url: https://repo.skype.com/data/SKYPE-GPG-KEY
     state: present
 
-- name: "desktop : skype : apt repository"
+- name: "skype : apt repository"
   apt_repository:
     repo: deb [arch=amd64] https://repo.skype.com/deb stable main
     state: present
 
-- name: "desktop : vscode : apt key"
+
+- name: "steam : add multiverse"
+  ansible.builtin.apt_repository:
+    repo: "deb http://archive.ubuntu.com/ubuntu/ {{ release_codename }} universe"
+
+##
+## VS Code setup
+##
+- name: "vscode : apt key"
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
     state: present
 
-- name: "desktop : vscode : repository"
+- name: "vscode : repository"
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
     state: present
 
-- name: "desktop : vidcutter : repository"
+- name: "vidcutter : repository"
   apt_repository:
     repo: ppa:ozmartian/apps
 
-- name: "desktop : install app packages"
+- name: "install app packages"
   apt:
     name:
     - ansible
@@ -42,9 +56,16 @@
     - gradle
     - openjdk-8-jre
     - skypeforlinux
+    - software-properties-common
     - sshpass
+    # - steam
     - vidcutter
     - virtualbox
-    - virtualbox-ext-pack
+    # - virtualbox-ext-pack
     - vlc
     update_cache: yes
+
+- name: "install snap packages"
+  snap:
+    name: slack
+    classic: yes

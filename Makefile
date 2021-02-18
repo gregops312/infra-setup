@@ -17,11 +17,11 @@ docker-setup:
 
 PHONY: docker-test
 docker-test:
-	ansible-playbook -i machines systems.yaml --limit docker
+	ansible-playbook -i machines systems.yaml --limit docker --extra-vars "type=server"
 
 ##
 ## Lint
 ##
 PHONY: lint
 lint:
-	ansible-lint --force-color systems.yaml
+	ansible-lint --force-color

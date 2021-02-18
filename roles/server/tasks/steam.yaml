@@ -1,0 +1,25 @@
+---
+- name: "server : create steam user"
+  user:
+    name: steam
+
+- name: Add multiverse
+  ansible.builtin.apt_repository:
+    repo: "deb http://archive.ubuntu.com/ubuntu/ {{ release_codename }} universe"
+    # codename: trusty
+
+# - name: "server : install i386 rchitecture"
+#   command: dpkg --add-architecture i386
+
+- name: "server : install steam"
+  apt:
+    name:
+    - lib32gcc1
+    - steamcmd
+    update_cache: yes
+
+# useradd -m steam
+# sudo add-apt-repository multiverse
+# sudo dpkg --add-architecture i386
+# sudo apt update
+# sudo apt install lib32gcc1 steamcmd 

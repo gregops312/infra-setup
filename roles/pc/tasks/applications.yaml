@@ -1,0 +1,14 @@
+---
+##
+## Steam
+##
+- name: is steam installed
+  command: dpkg-query --show steam-launcher
+  register: steam_exists
+  changed_when: False
+  failed_when: False
+
+- name: install steam
+  apt:
+    deb: https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+  when: steam_exists.rc == 1
