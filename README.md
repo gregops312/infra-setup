@@ -5,6 +5,10 @@
 ## Prerequesties
 
 ```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
 # Target
 sudo apt-get install -y openssh-server
 
@@ -17,23 +21,14 @@ scp ./bin/prepare-ansible.sh gkman@127.0.1.1:~/prepare-ansible.sh
 
 ## Running
 
-* desktop
-
-    ```bash
-    ansible-playbook -i machines systems.yaml -k --limit desktop
-    ```
-
-* localhost
-
-    ```bash
-    ansible-playbook -i machines -c local  systems.yaml --limit localhost
-    ```
-
-* server
-
-    ```bash
-    ansible-playbook -i machines systems.yaml -k --limit server
-    ```
+```bash
+# desktop
+ansible-playbook -i machines systems.yaml -k --limit desktop
+# localhost
+ansible-playbook -i machines -c local  systems.yaml --limit localhost
+# server
+ansible-playbook -i machines systems.yaml -k --limit server
+```
 
 ## Dev
 
@@ -41,20 +36,14 @@ scp ./bin/prepare-ansible.sh gkman@127.0.1.1:~/prepare-ansible.sh
 
 ```bash
 # Runs setup, test, clean
-make docker
-
+make docker type=server
 # Setup docker container
 make docker-setup
-
 # Runs Ansible against Docker container
-make docker-test
+make docker-test type=server
+# Clean
+make docker-clean
 
-# Cleans up Docker container
-make docker-cleam
-```
-
-```bash
-ansible-playbook -i machines systems.yaml --limit docker --extra-vars "type=server"
 ansible-playbook -i machines systems.yaml --limit docker --extra-vars "type=server laptop=true"
 ```
 
@@ -62,13 +51,11 @@ ansible-playbook -i machines systems.yaml --limit docker --extra-vars "type=serv
 
 ```bash
 # Create VM and run Ansible
-export TYPE='server'; vagrant up
-
+make vagrant-up type=server
 # Just run Ansible on previously built VM
-export TYPE='server'; vagrant provision
+make vagrant-provision type=server
+# Clean
+vagrant-clean
 
 ansible-playbook -i machines systems.yaml --limit virtualbox --extra-vars "type=pc"
-
-# Destroy
-vagrant destroy -f
 ```

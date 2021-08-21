@@ -28,7 +28,7 @@ create() {
     --port 0 \
     --device 0 \
     --type dvddrive \
-    --medium "/home/gkman/os-images/ubuntu.iso"
+    --medium "./ubuntu.iso"
   echo
 
   echo 'Create HDD'

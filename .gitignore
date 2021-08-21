@@ -1,7 +1,9 @@
+config/
 venv/
 run.sh
 Ubuntu.vdi
 ubuntu*.log
+ubuntu.iso
 
 
 # Created by https://www.gitignore.io/api/git,vim,linux,macos,ansible,vagrant,intellij,intellij+iml,intellij+all

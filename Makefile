@@ -1,11 +1,13 @@
-default: lint
+TYPE=$(type)
 
-PHONY: docker
-docker: docker-setup docker-test docker-clean
+default: lint
 
 ##
 ## Docker lifecycle
 ##
+PHONY: docker
+docker: docker-setup docker-test docker-clean
+
 PHONY: docker-clean
 docker-clean:
 	docker kill infra-test
@@ -17,7 +19,7 @@ docker-setup:
 
 PHONY: docker-test
 docker-test:
-	ansible-playbook -i machines systems.yaml --limit docker --extra-vars "type=server"
+	ansible-playbook -i machines systems.yaml --limit docker --extra-vars "type=$(TYPE)"
 
 ##
 ## Lint
@@ -25,3 +27,21 @@ docker-test:
 PHONY: lint
 lint:
 	ansible-lint --force-color
+
+##
+## Vagrant
+##
+PHONY: vagrant
+vagrant: vagrant-up vagrant-clean
+
+PHONY: vagrant-clean
+vagrant-clean:
+	vagrant destroy -f
+
+PHONY: vagrant-provision
+vagrant-provision:
+	export TYPE='$(TYPE)'; vagrant provision
+
+PHONY: vagrant-up
+vagrant-up:
+	TYPE='$(TYPE)'; vagrant up

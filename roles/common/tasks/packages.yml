@@ -19,7 +19,6 @@
     - tmux
     - tree
     - vim
-    - wget
     - xclip
     - zsh
     update_cache: yes
